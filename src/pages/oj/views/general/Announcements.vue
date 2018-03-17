@@ -4,13 +4,13 @@
       {{title}}
     </div>
     <div slot="extra">
-      <Button v-if="listVisible" type="info" @click="init" :loading="btnLoading">Refresh</Button>
-      <Button v-else type="ghost" icon="ios-undo" @click="goBack">Back</Button>
+      <Button v-if="listVisible" type="info" @click="init" :loading="btnLoading">刷新</Button>
+      <Button v-else type="ghost" icon="ios-undo" @click="goBack">返回</Button>
     </div>
 
     <transition-group name="announcement-animate" mode="in-out">
       <div class="no-announcement" v-if="!announcements.length" key="no-announcement">
-        <p>No announcements</p>
+        <p>无公告</p>
       </div>
       <template v-if="listVisible">
         <ul class="announcements-container" key="list">
@@ -19,7 +19,7 @@
               <div class="title"><a class="entry" @click="goAnnouncement(announcement)">
                 {{announcement.title}}</a></div>
               <div class="date">{{announcement.create_time | localtime }}</div>
-              <div class="creator"> By {{announcement.created_by.username}}</div>
+              <div class="creator">由{{announcement.created_by.username}}创建</div>
             </div>
           </li>
         </ul>

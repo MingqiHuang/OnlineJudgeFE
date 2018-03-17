@@ -1,6 +1,6 @@
 <template>
   <div class="setting-main">
-    <div class="section-title">Avatar Setting</div>
+    <div class="section-title">头像设置</div>
     <template v-if="!avatarOption.imgSrc">
       <Upload type="drag"
               class="mini-container"
@@ -9,7 +9,7 @@
               :before-upload="handleSelectFile">
         <div style="padding: 30px 0">
           <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-          <p>Drop  here, or click to select manually</p>
+          <p>拖动到这里，或者点击手动选择</p>
         </div>
       </Upload>
     </template>
@@ -54,37 +54,37 @@
     <Modal v-model="uploadModalVisible"
            title="Upload the avatar">
       <div class="upload-modal">
-        <p class="notice">Your avatar will be set to:</p>
+        <p class="notice">你的头像将会被设置为：</p>
         <img :src="uploadImgSrc"/>
       </div>
       <div slot="footer">
-        <Button @click="uploadAvatar" :loading="loadingUploadBtn">upload</Button>
+        <Button @click="uploadAvatar" :loading="loadingUploadBtn">上传</Button>
       </div>
     </Modal>
 
-    <div class="section-title">Profile Setting</div>
+    <div class="section-title">个人简介设置</div>
     <Form ref="formProfile" :model="formProfile">
       <Row type="flex" :gutter="30" justify="space-around">
         <Col :span="11">
-        <FormItem label="Real Name">
+        <FormItem label="姓名">
           <Input v-model="formProfile.real_name"/>
         </FormItem>
-        <Form-item label="School">
+        <Form-item label="学校">
           <Input v-model="formProfile.school"/>
         </Form-item>
-        <Form-item label="Major">
+        <Form-item label="专业">
           <Input v-model="formProfile.major"/>
         </Form-item>
         <Form-item>
-          <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Save All</Button>
+          <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">保存全部</Button>
         </Form-item>
         </Col>
 
         <Col :span="11">
-        <Form-item label="Mood">
+        <Form-item label="心情">
           <Input v-model="formProfile.mood"/>
         </Form-item>
-        <Form-item label="Blog">
+        <Form-item label="博客">
           <Input v-model="formProfile.blog"/>
         </Form-item>
         <Form-item label="Github">
@@ -140,19 +140,19 @@
       checkFileType (file) {
         if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(file.name)) {
           this.$Notice.warning({
-            title: 'File type not support',
-            desc: 'The format of ' + file.name + ' is incorrect ，please choose image only.'
+            title: '文件类型不被支持',
+            desc: '' + file.name + '的文件格式错误，请只选择图片。'
           })
           return false
         }
         return true
       },
       checkFileSize (file) {
-        // max size is 2MB
-        if (file.size > 2 * 1024 * 1024) {
+        // max size is 100MB
+        if (file.size > 100 * 1024 * 1024) {
           this.$Notice.warning({
-            title: 'Exceed max size limit',
-            desc: 'File ' + file.name + ' is too big, you can upload a image up to 2MB in size'
+            title: '文件体积超限',
+            desc: '文件 ' + file.name + ' 太大，请上传小于100M的文件。'
           })
           return false
         }
@@ -182,7 +182,7 @@
       },
       reselect () {
         this.$Modal.confirm({
-          content: 'Are you sure to disgard the changes?',
+          content: '你确定放弃更改吗？,
           onOk: () => {
             this.avatarOption.imgSrc = ''
           }
@@ -207,7 +207,7 @@
             headers: {'content-type': 'multipart/form-data'}
           }).then(res => {
             this.loadingUploadBtn = false
-            this.$success('Successfully set new avatar')
+            this.$success('设置头像成功')
             this.uploadModalVisible = false
             this.avatarOption.imgSrc = ''
             this.$store.dispatch('getProfile')
@@ -220,7 +220,7 @@
         this.loadingSaveBtn = true
         let updateData = utils.filterEmptyValue(Object.assign({}, this.formProfile))
         api.updateProfile(updateData).then(res => {
-          this.$success('Success')
+          this.$success('成功')
           this.$store.commit(types.CHANGE_PROFILE, {profile: res.data.data})
           this.loadingSaveBtn = false
         }, _ => {

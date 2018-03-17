@@ -8,10 +8,10 @@
           <pre>{{submission.statistic_info.err_info}}</pre>
         </template>
         <template v-else>
-          <span>Time: {{submission.statistic_info.time_cost | submissionTime}}</span>
-          <span>Memory: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
-          <span>Lang: {{submission.language}}</span>
-          <span>Author: {{submission.username}}</span>
+          <span>时间：{{submission.statistic_info.time_cost | submissionTime}}</span>
+          <span>内存：{{submission.statistic_info.memory_cost | submissionMemory}}</span>
+          <span>语言：{{submission.language}}</span>
+          <span>作者：{{submission.username}}</span>
         </template>
       </div>
     </Alert>
@@ -22,7 +22,7 @@
     <Alert type="warning">
       <div class="admin-info-content">
         <Icon type="information-circled" color="#f90"></Icon>
-        <span class="admin-info-content">Only admin can check the test_case details in ACM problems.</span>
+        <span class="admin-info-content">只有管理员才能查看ACM题目的分点情况</span>
       </div>
     </Alert>
     <Table stripe :loading="loading" :disabled-hover="true" :columns="columns" :data="submission.info.data"></Table>
@@ -35,11 +35,11 @@
     <div id="share-btn">
       <Button v-if="submission.shared"
               type="warning" size="large" @click="shareSubmission(false)">
-        UnShare
+        不公开
       </Button>
       <Button v-else
               type="primary" size="large" @click="shareSubmission(true)">
-        Share
+        公开
       </Button>
     </div>
     </Col>
@@ -55,12 +55,12 @@
 
   const baseColumn = [
     {
-      title: 'ID',
+      title: '编号',
       align: 'center',
       type: 'index'
     },
     {
-      title: 'Status',
+      title: '状态',
       align: 'center',
       render: (h, params) => {
         return h('Tag', {
@@ -71,14 +71,14 @@
       }
     },
     {
-      title: 'Memory',
+      title: '内存',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionMemoryFormat(params.row.memory))
       }
     },
     {
-      title: 'Time',
+      title: '时间',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.cpu_time))
@@ -86,20 +86,20 @@
     }
   ]
   const scoreColumn = [{
-    title: 'Score',
+    title: '分数',
     align: 'center',
     key: 'score'
   }]
   const adminColumn = [
     {
-      title: 'Real Time',
+      title: 'CPU时间',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.real_time))
       }
     },
     {
-      title: 'Singal',
+      title: '返回值',
       align: 'center',
       key: 'signal'
     }

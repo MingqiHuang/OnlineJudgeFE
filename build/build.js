@@ -11,7 +11,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 
-const spinner = ora('building for production...')
+const spinner = ora('正在为生产环境构建项目...')
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
@@ -28,13 +28,13 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     }) + '\n\n')
 
     if (stats.hasErrors()) {
-      console.log(chalk.red('  Build failed with errors.\n'))
+      console.log(chalk.red('  构建失败，有错误发生！\n'))
       process.exit(1)
     }
 
-    console.log(chalk.cyan('  Congratulations, the project built complete without error\n'))
+    console.log(chalk.cyan('  恭喜，成功构建项目，没有错误发生！\n'))
     console.log(chalk.yellow(
-      ' You can now check the onlinejudge in http://YouIP/'
+      ' 你现在可以在 http://YouIP/ 访问到你的OJ了。'
     ))
   })
 })

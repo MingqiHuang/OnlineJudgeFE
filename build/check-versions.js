@@ -29,7 +29,7 @@ module.exports = function () {
     const mod = versionRequirements[i]
     if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
       warnings.push(mod.name + ': ' +
-        chalk.red(mod.currentVersion) + ' should be ' +
+        chalk.red(mod.currentVersion) + ' 应为 ' +
         chalk.green(mod.versionRequirement)
       )
     }
@@ -37,7 +37,7 @@ module.exports = function () {
 
   if (warnings.length) {
     console.log('')
-    console.log(chalk.yellow('To use this template, you must update following to modules:'))
+    console.log(chalk.yellow('要使用这个模板，你必须更新下列模块：'))
     console.log()
     for (let i = 0; i < warnings.length; i++) {
       const warning = warnings[i]

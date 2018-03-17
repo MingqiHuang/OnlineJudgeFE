@@ -2,39 +2,39 @@
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
-      <div slot="title">Problem List</div>
+      <div slot="title">问题列表</div>
       <div slot="extra">
         <ul class="filter">
           <li>
             <Dropdown @on-click="filterByDifficulty">
-              <span>{{query.difficulty === '' ? 'Difficulty' : query.difficulty}}
+              <span>{{query.difficulty === '' ? '难度' : query.difficulty}}
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="Low">Low</Dropdown-item>
-                <Dropdown-item name="Mid">Mid</Dropdown-item>
-                <Dropdown-item name="High">High</Dropdown-item>
+                <Dropdown-item name="">全部</Dropdown-item>
+                <Dropdown-item name="Low">低</Dropdown-item>
+                <Dropdown-item name="Mid">中</Dropdown-item>
+                <Dropdown-item name="High">高</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
           <li>
             <i-switch size="large" @on-change="handleTagsVisible">
-              <span slot="open">Tags</span>
-              <span slot="close">Tags</span>
+              <span slot="open">标签</span>
+              <span slot="close">标签</span>
             </i-switch>
           </li>
           <li>
             <Input v-model="query.keyword"
                    @on-enter="filterByKeyword"
                    @on-click="filterByKeyword"
-                   placeholder="keyword"
+                   placeholder="关键词"
                    icon="ios-search-strong"/>
           </li>
           <li>
             <Button type="info" @click="onReset">
               <Icon type="refresh"></Icon>
-              Reset
+              重置
             </Button>
           </li>
         </ul>
@@ -51,7 +51,7 @@
 
     <Col :span="5">
     <Panel :padding="10">
-      <div slot="title" class="taglist-title">Tags</div>
+      <div slot="title" class="taglist-title">标签</div>
       <Button v-for="tag in tagList"
               :key="tag.name"
               @click="filterByTag(tag.name)"
@@ -63,7 +63,7 @@
 
       <Button long id="pick-one" @click="pickone">
         <Icon type="shuffle"></Icon>
-        Pick one
+        选择一个
       </Button>
     </Panel>
     <Spin v-if="loadings.tag" fix size="large"></Spin>
@@ -109,7 +109,7 @@
             }
           },
           {
-            title: 'Title',
+            title: '标题',
             width: '35%',
             render: (h, params) => {
               return h('Button', {
@@ -129,7 +129,7 @@
             }
           },
           {
-            title: 'Level',
+            title: '难度',
             render: (h, params) => {
               let t = params.row.difficulty
               let color = 'blue'
@@ -143,11 +143,11 @@
             }
           },
           {
-            title: 'Total',
+            title: '总提交',
             key: 'submission_number'
           },
           {
-            title: 'AC Rate',
+            title: 'AC率',
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }
@@ -234,7 +234,7 @@
         if (value) {
           this.problemTableColumns.push(
             {
-              title: 'Tags',
+              title: '标签',
               align: 'center',
               width: '200px',
               render: (h, params) => {
@@ -258,7 +258,7 @@
       },
       pickone () {
         api.pickone().then(res => {
-          this.$success('Good Luck')
+          this.$success('祝你好运')
           this.$router.push({name: 'problem-details', params: {problemID: res.data.data}})
         })
       }

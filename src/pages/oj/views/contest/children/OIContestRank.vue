@@ -7,17 +7,17 @@
         <Icon type="android-settings" size="20"></Icon>
         <div slot="content" id="switches">
           <p>
-            <span>Menu</span>
+            <span>菜单</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>Chart</span>
+            <span>排名表</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>Auto Refresh(10s)</span>
+            <span>自动刷新（10s）</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <p v-if="isContestAdmin">
-            <span>RealName</span>
+            <span>姓名</span>
             <i-switch v-model="showRealName"></i-switch>
           </p>
         </div>
@@ -62,7 +62,7 @@
             }
           },
           {
-            title: 'User',
+            title: '用户',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -83,7 +83,7 @@
             }
           },
           {
-            title: 'Total Score',
+            title: '总分',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -102,7 +102,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Top 10 Teams',
+            text: '排名前十的队伍',
             left: 'center'
           },
           tooltip: {

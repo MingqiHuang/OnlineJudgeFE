@@ -7,12 +7,12 @@
         prop="id">
       </el-table-column>
       <el-table-column
-        label="DisplayID"
+        label="显示编号"
         width="200"
         prop="_id">
       </el-table-column>
       <el-table-column
-        label="Title"
+        label="题目名称"
         prop="title">
       </el-table-column>
       <el-table-column
@@ -75,7 +75,7 @@
         })
       },
       handleAddProblem (problemID) {
-        this.$prompt('Please input display id for the contest problem', 'confirm').then(({value}) => {
+        this.$prompt('请为比赛题目输入显示编号', '确认').then(({value}) => {
           let data = {
             problem_id: problemID,
             contest_id: this.contestID,

@@ -5,60 +5,60 @@
       <el-form ref="form" :model="problem" :rules="rules" label-position="top" label-width="70px">
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item prop="_id" label="Display ID"
+            <el-form-item prop="_id" label="显示编号"
                           :required="this.routeName === 'create-contest-problem' || this.routeName === 'edit-contet-problem'">
-              <el-input placeholder="Display ID" v-model="problem._id"></el-input>
+              <el-input placeholder="显示编号" v-model="problem._id"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="18">
-            <el-form-item prop="title" label="Title" required>
+            <el-form-item prop="title" label="标题" required>
               <el-input placeholder="Title" v-model="problem.title"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="24">
-            <el-form-item prop="description" label="Description" required>
+            <el-form-item prop="description" label="题目描述" required>
               <Simditor v-model="problem.description"></Simditor>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="24">
-            <el-form-item prop="input_description" label="Input Description" required>
+            <el-form-item prop="input_description" label="输入格式" required>
               <Simditor v-model="problem.input_description"></Simditor>
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item prop="output_description" label="Output Description" required>
+            <el-form-item prop="output_description" label="输出格式" required>
               <Simditor v-model="problem.output_description"></Simditor>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="8">
-            <el-form-item label="Time Limit" required>
-              <el-input type="Number" placeholder="Time Limit" v-model="problem.time_limit"></el-input>
+            <el-form-item label="时间限制" required>
+              <el-input type="Number" placeholder="时间限制（单位ms）" v-model="problem.time_limit"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Memory limit" required>
-              <el-input type="Number" placeholder="Memory Limit" v-model="problem.memory_limit"></el-input>
+            <el-form-item label="内存限制" required>
+              <el-input type="Number" placeholder="内存限制（单位MB）" v-model="problem.memory_limit"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Difficulty">
-              <el-select class="difficulty-select" size="small" placeholder="Difficulty" v-model="problem.difficulty">
-                <el-option label="Low" value="Low"></el-option>
-                <el-option label="Mid" value="Mid"></el-option>
-                <el-option label="High" value="High"></el-option>
+            <el-form-item label="难度">
+              <el-select class="difficulty-select" size="small" placeholder="难度" v-model="problem.difficulty">
+                <el-option label="低" value="Low"></el-option>
+                <el-option label="中" value="Mid"></el-option>
+                <el-option label="高" value="High"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="Visible">
+            <el-form-item label="题目可见性">
               <el-switch
                 v-model="problem.visible"
                 active-text=""
@@ -67,7 +67,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Tag" :error="error.tags" required>
+            <el-form-item label="标签" :error="error.tags" required>
               <span class="tags">
                 <el-tag
                   v-for="tag in problem.tags"
@@ -88,11 +88,11 @@
                 @select="addTag"
                 :fetch-suggestions="querySearch">
               </el-autocomplete>
-              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ New Tag</el-button>
+              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ 添加标签</el-button>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Languages" :error="error.languages" required>
+            <el-form-item label="语言" :error="error.languages" required>
               <el-checkbox-group v-model="problem.languages">
                 <el-tooltip class="spj-radio" v-for="lang in allLanguage.languages" :key="'spj'+lang.name" effect="dark"
                             :content="lang.description" placement="top-start">
@@ -106,25 +106,25 @@
           <el-form-item v-for="(sample, index) in problem.samples" :key="'sample'+index">
             <Accordion :title="'Sample' + (index + 1)">
               <el-button type="warning" size="small" icon="el-icon-delete" slot="header" @click="deleteSample(index)">
-                Delete
+                删除
               </el-button>
               <el-row :gutter="20">
                 <el-col :span="12">
-                  <el-form-item label="Input Samples" required>
+                  <el-form-item label="输入样例" required>
                     <el-input
                       :rows="5"
                       type="textarea"
-                      placeholder="Input Samples"
+                      placeholder="输入样例"
                       v-model="sample.input">
                     </el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                  <el-form-item label="Output Samples" required>
+                  <el-form-item label="输出样例" required>
                     <el-input
                       :rows="5"
                       type="textarea"
-                      placeholder="Output Samples"
+                      placeholder="输出样例"
                       v-model="sample.output">
                     </el-input>
                   </el-form-item>
@@ -134,10 +134,10 @@
           </el-form-item>
         </div>
         <div class="add-sample-btn">
-          <button type="button" class="add-samples" @click="addSample()"><i class="el-icon-plus"></i>Add Sample
+          <button type="button" class="add-samples" @click="addSample()"><i class="el-icon-plus"></i>添加样例
           </button>
         </div>
-        <el-form-item label="Code Template">
+        <el-form-item label="标程">
           <el-row>
             <el-col :span="24" v-for="(v, k) in template" :key="'template'+k">
               <el-form-item>
@@ -151,13 +151,13 @@
         </el-form-item>
         <el-form-item label="Special Judge" :error="error.spj">
           <el-col :span="24">
-            <el-checkbox v-model="problem.spj" @click.native.prevent="switchSpj()">Use Special Judge</el-checkbox>
+            <el-checkbox v-model="problem.spj" @click.native.prevent="switchSpj()">开启SPJ</el-checkbox>
           </el-col>
         </el-form-item>
         <el-form-item v-if="problem.spj">
-          <Accordion title="Special Judge Code">
+          <Accordion title="SPJ代码">
             <template slot="header">
-              <span>SPJ language</span>
+              <span>SPJ语言</span>
               <el-radio-group v-model="problem.spj_language">
                 <el-tooltip class="spj-radio" v-for="lang in allLanguage.spj_languages" :key="lang.name" effect="dark"
                             :content="lang.description" placement="top-start">
@@ -166,7 +166,7 @@
               </el-radio-group>
               <el-button type="primary" size="small" icon="el-icon-fa-random" @click="compileSPJ"
                          :loading="loadingCompile">
-                Compile
+                编译SPJ
               </el-button>
             </template>
             <code-mirror v-model="problem.spj_code" :mode="spjMode"></code-mirror>
@@ -174,7 +174,7 @@
         </el-form-item>
         <el-row :gutter="20">
           <el-col :span="4">
-            <el-form-item label="TestCase" :error="error.testcase">
+            <el-form-item label="测试数据" :error="error.testcase">
               <el-upload
                 action="/api/admin/test_case"
                 name="file"
@@ -182,15 +182,15 @@
                 :show-file-list="false"
                 :on-success="uploadSucceeded"
                 :on-error="uploadFailed">
-                <el-button size="small" type="primary" icon="el-icon-fa-upload">Choose File</el-button>
+                <el-button size="small" type="primary" icon="el-icon-fa-upload">选择文件</el-button>
               </el-upload>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Type">
+            <el-form-item label="数据类型">
               <el-radio-group v-model="problem.rule_type" :disabled="disableRuleType">
-                <el-radio label="ACM">ACM</el-radio>
-                <el-radio label="OI">OI</el-radio>
+                <el-radio label="ACM">ACM（通过所有测试点才算通过本题）</el-radio>
+                <el-radio label="OI">OI（分点计分）</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -200,19 +200,19 @@
               style="width: 100%">
               <el-table-column
                 prop="input_name"
-                label="Input">
+                label="输入文件名">
               </el-table-column>
               <el-table-column
                 prop="output_name"
-                label="Output">
+                label="输出文件名">
               </el-table-column>
               <el-table-column
                 prop="score"
-                label="Score">
+                label="分值">
                 <template slot-scope="scope">
                   <el-input
                     size="small"
-                    placeholder="Score"
+                    placeholder="分值"
                     v-model="scope.row.score"
                     :disabled="problem.rule_type !== 'OI'">
                   </el-input>
@@ -221,13 +221,13 @@
             </el-table>
           </el-col>
         </el-row>
-        <el-form-item style="margin-top: 20px" label="Hint">
+        <el-form-item style="margin-top: 20px" label="提示">
           <Simditor v-model="problem.hint" placeholder=""></Simditor>
         </el-form-item>
-        <el-form-item label="Source">
-          <el-input placeholder="Source" v-model="problem.source"></el-input>
+        <el-form-item label="来源">
+          <el-input placeholder="来源" v-model="problem.source"></el-input>
         </el-form-item>
-        <save @click.native="submit()">Save</save>
+        <save @click.native="submit()">保存</save>
       </el-form>
     </Panel>
   </div>
@@ -249,10 +249,10 @@
     data () {
       return {
         rules: {
-          _id: {required: true, message: 'Display ID is required', trigger: 'blur'},
-          title: {required: true, message: 'Title is required', trigger: 'blur'},
-          input_description: {required: true, message: 'Input Description is required', trigger: 'blur'},
-          output_description: {required: true, message: 'Output Description is required', trigger: 'blur'}
+          _id: {required: true, message: '必须填写显示编号', trigger: 'blur'},
+          title: {required: true, message: '必须填写标题', trigger: 'blur'},
+          input_description: {required: true, message: '必须填写输入格式', trigger: 'blur'},
+          output_description: {required: true, message: '必须填写输出格式', trigger: 'blur'}
         },
         loadingCompile: false,
         mode: '',
@@ -329,7 +329,7 @@
 
         // get problem after getting languages list to avoid find undefined value in `watch problem.languages`
         if (this.mode === 'edit') {
-          this.title = 'Edit Problem'
+          this.title = '编辑题目'
           let funcName = {'edit-problem': 'getProblem', 'edit-contest-problem': 'getContestProblem'}[this.routeName]
           api[funcName](this.$route.params.problemId).then(problemRes => {
             let data = problemRes.data.data
@@ -341,7 +341,7 @@
             this.testCaseUploaded = true
           })
         } else {
-          this.title = 'Add Problem'
+          this.title = '添加题目'
           for (let item of allLanguage.languages) {
             this.problem.languages.push(item.name)
           }
@@ -382,9 +382,9 @@
     methods: {
       switchSpj () {
         if (this.testCaseUploaded) {
-          this.$confirm('If you change problem judge method, you need to re-upload test cases', 'Warning', {
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'Cancel',
+          this.$confirm('如果你改变了测评方式，你需要重新上传数据', '警告', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
             this.problem.spj = !this.problem.spj
@@ -444,7 +444,7 @@
         this.problem.test_case_id = response.data.id
       },
       uploadFailed () {
-        this.$error('Upload failed')
+        this.$error('上传失败')
       },
       compileSPJ () {
         let data = {
@@ -462,7 +462,7 @@
           this.problem.spj_compile_ok = false
           const h = this.$createElement
           this.$msgbox({
-            title: 'Compile Error',
+            title: 'SPJ编译错误',
             type: 'error',
             message: h('pre', err.data.data),
             showCancelButton: false,
@@ -473,26 +473,26 @@
       },
       submit () {
         if (!this.problem.samples.length) {
-          this.$error('Sample is required')
+          this.$error('需要样例')
           return
         }
         for (let sample of this.problem.samples) {
           if (!sample.input || !sample.output) {
-            this.$error('Sample input and output is required')
+            this.$error('需要样例输入输出')
             return
           }
         }
         if (!this.problem.tags.length) {
-          this.error.tags = 'Please add at least one tag'
+          this.error.tags = '请添加至少一个标签'
           this.$error(this.error.tags)
           return
         }
         if (this.problem.spj) {
           if (!this.problem.spj_code) {
-            this.error.spj = 'Spj code is required'
+            this.error.spj = '需要SPJ代码'
             this.$error(this.error.spj)
           } else if (!this.problem.spj_compile_ok) {
-            this.error.spj = 'SPJ code has not been successfully compiled'
+            this.error.spj = 'SPJ代码未成功编译'
           }
           if (this.error.spj) {
             this.$error(this.error.spj)
@@ -500,12 +500,12 @@
           }
         }
         if (!this.problem.languages.length) {
-          this.error.languages = 'Please choose at least one language for problem'
+          this.error.languages = '请为问题选择至少一种语言'
           this.$error(this.error.languages)
           return
         }
         if (!this.testCaseUploaded) {
-          this.error.testCase = 'Test case is not uploaded yet'
+          this.error.testCase = '尚未上传测试数据'
           this.$error(this.error.testCase)
           return
         }
@@ -513,11 +513,11 @@
           for (let item of this.problem.test_case_score) {
             try {
               if (parseInt(item.score) <= 0) {
-                this.$error('Invalid test case score')
+                this.$error('测试点分数无效')
                 return
               }
             } catch (e) {
-              this.$error('Test case score must be an integer')
+              this.$error('测试点分数必须是整数')
               return
             }
           }
@@ -610,4 +610,3 @@
     overflow-x: scroll;
   }
 </style>
-

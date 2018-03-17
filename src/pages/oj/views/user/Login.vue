@@ -2,17 +2,17 @@
   <div>
     <Form ref="formLogin" :model="formLogin" :rules="ruleLogin">
       <FormItem prop="username">
-        <Input type="text" v-model="formLogin.username" placeholder="Username" size="large" @on-enter="handleLogin">
+        <Input type="text" v-model="formLogin.username" placeholder="用户名" size="large" @on-enter="handleLogin">
         <Icon type="ios-person-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
       <FormItem prop="password">
-        <Input type="password" v-model="formLogin.password" placeholder="Password" size="large" @on-enter="handleLogin">
+        <Input type="password" v-model="formLogin.password" placeholder="密码" size="large" @on-enter="handleLogin">
         <Icon type="ios-locked-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
       <FormItem prop="tfa_code" v-if="tfaRequired">
-        <Input v-model="formLogin.tfa_code" placeholder="Code from your TFA app">
+        <Input v-model="formLogin.tfa_code" placeholder="两步验证验证码">
         <Icon type="ios-lightbulb-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
@@ -25,8 +25,8 @@
         :loading="btnLoginLoading">
         Login
       </Button>
-      <a v-if="website.allow_register" @click.stop="handleBtnClick('register')">No account? Register now!</a>
-      <a @click.stop="goResetPassword" style="float: right">Forget Password</a>
+      <a v-if="website.allow_register" @click.stop="handleBtnClick('register')">没有帐号？现在注册！</a>
+      <a @click.stop="goResetPassword" style="float: right">忘了密码？</a>
     </div>
   </div>
 </template>

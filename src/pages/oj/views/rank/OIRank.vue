@@ -2,7 +2,7 @@
   <Row type="flex" justify="space-around">
     <Col :span="22">
     <Panel :padding="10">
-      <div slot="title">OI Ranklist</div>
+      <div slot="title">OI赛制排名</div>
       <div class="echarts">
         <ECharts :options="options" ref="chart" auto-resize></ECharts>
       </div>
@@ -41,7 +41,7 @@
             }
           },
           {
-            title: 'user',
+            title: '用户',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -62,27 +62,27 @@
             }
           },
           {
-            title: 'mood',
+            title: '心情',
             align: 'center',
             key: 'mood'
           },
           {
-            title: 'Score',
+            title: '分数',
             align: 'center',
             key: 'total_score'
           },
           {
-            title: 'AC',
+            title: '通过题数',
             align: 'center',
             key: 'accepted_number'
           },
           {
-            title: 'Total',
+            title: '总提交次数',
             align: 'center',
             key: 'submission_number'
           },
           {
-            title: 'Rating',
+            title: '排名',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.getACRate(params.row.accepted_number, params.row.submission_number))

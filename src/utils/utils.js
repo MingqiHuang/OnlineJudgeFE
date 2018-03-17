@@ -12,7 +12,7 @@ function submissionMemoryFormat (memory) {
 
 function submissionTimeFormat (time) {
   if (time === undefined) return '--'
-  return time + 'ms'
+  return time + ' ms'
 }
 
 function getACRate (acCount, totalCount) {
@@ -53,14 +53,14 @@ function downloadFile (url) {
         if (resp.data.error) {
           Vue.prototype.$error(resp.data.error)
         } else {
-          Vue.prototype.$error('Invalid file format')
+          Vue.prototype.$error('文件格式无效')
         }
         fr.onload = (event) => {
           let data = JSON.parse(event.target.result)
           if (data.error) {
             Vue.prototype.$error(data.data)
           } else {
-            Vue.prototype.$error('Invalid file format')
+            Vue.prototype.$error('文件格式无效')
           }
         }
         let b = new window.Blob([resp.data], {type: 'application/json'})

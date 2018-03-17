@@ -16,29 +16,29 @@
 
         <div class="flex-container">
           <div class="left">
-            <p>Solved</p>
+            <p>已通过</p>
             <p class="emphasis">{{profile.accepted_number}}</p>
           </div>
           <div class="middle">
-            <p>Submissions</p>
+            <p>提交记录</p>
             <p class="emphasis">{{profile.submission_number}}</p>
           </div>
           <div class="right">
-            <p>Score</p>
+            <p>得分</p>
             <p class="emphasis">{{profile.total_score}}</p>
           </div>
         </div>
         <div id="problems">
-          <div v-if="problems.length">List of solved problems
+          <div v-if="problems.length">已解决的问题
             <Poptip v-if="refreshVisible" trigger="hover" placement="right-start">
               <Icon type="ios-help-outline"></Icon>
               <div slot="content">
-                <p>If you find the following problem id does not exist,<br> try to click the button.</p>
-                <Button type="info" @click="freshProblemDisplayID">regenerate</Button>
+                <p>如果下列题目不存在，<br> 尝试点击下面的按钮</p>
+                <Button type="info" @click="freshProblemDisplayID">重新生成</Button>
               </div>
             </Poptip>
           </div>
-          <p v-else>The guy is so lazy that has not solved any problem yet.</p>
+          <p v-else>这个人很懒，还没有解决任何问题</p>
           <div class="btns">
             <div class="problem-btn" v-for="problemID in problems">
               <Button type="ghost" @click="goProblem(problemID)">{{problemID}}</Button>
@@ -85,7 +85,7 @@
           this.profile = res.data.data
           this.getSolvedProblems()
           let registerTime = time.utcToLocal(this.profile.user.create_time, 'YYYY-MM-D')
-          console.log('The guy registered at ' + registerTime + '.')
+          console.log('这个人在' + registerTime + '注册。')
         })
       },
       getSolvedProblems () {
@@ -108,7 +108,7 @@
       },
       freshProblemDisplayID () {
         api.freshDisplayID().then(res => {
-          this.$success('Update successfully')
+          this.$success('更新成功')
           this.init()
         })
       }

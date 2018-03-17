@@ -15,7 +15,7 @@ build_vendor_dll && \
 npm run build
 
 if [ $? -ne 0 ]; then
-    echo "Build error, please check node version and package.json"
+    echo "构建失败，请检查node版本和package.json文件"
     exit 1
 fi
 

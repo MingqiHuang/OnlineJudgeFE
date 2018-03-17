@@ -23,7 +23,7 @@
                 <Input v-model="contestPassword" type="password"
                        placeholder="contest password" class="contest-password-input"
                        @on-enter="checkPassword"/>
-                <Button type="info" @click="checkPassword">Enter</Button>
+                <Button type="info" @click="checkPassword">进入</Button>
               </div>
             </Panel>
             <Table :columns="columns" :data="contest_table" disabled-hover style="margin-bottom: 40px;"></Table>
@@ -37,38 +37,38 @@
         <VerticalMenu-item :disabled="contestMenuDisabled"
                            :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
           <Icon type="ios-photos"></Icon>
-          Problems
+          问题
         </VerticalMenu-item>
 
         <VerticalMenu-item :disabled="contestMenuDisabled"
                            :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
           <Icon type="chatbubble-working"></Icon>
-          Announcements
+          公告
         </VerticalMenu-item>
 
         <VerticalMenu-item v-if="OIContestRealTimePermission"
                            :disabled="contestMenuDisabled"
                            :route="{name: 'contest-submission-list'}">
           <Icon type="navicon-round"></Icon>
-          Submissions
+          提交记录
         </VerticalMenu-item>
 
         <VerticalMenu-item v-if="OIContestRealTimePermission"
                            :disabled="contestMenuDisabled"
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
-          Rankings
+          排名
         </VerticalMenu-item>
 
         <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
           <Icon type="home"></Icon>
-          Overview
+          总览
         </VerticalMenu-item>
 
         <VerticalMenu-item v-if="showAdminHelper"
                            :route="{name: 'acm-helper', params: {contestID: contestID}}">
           <Icon type="ios-paw"></Icon>
-          Admin Helper
+          管理员助手
         </VerticalMenu-item>
       </VerticalMenu>
     </div>
@@ -95,27 +95,27 @@
         contestPassword: '',
         columns: [
           {
-            title: 'StartAt',
+            title: '开始于',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.start_time))
             }
           },
           {
-            title: 'EndAt',
+            title: '结束于',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.end_time))
             }
           },
           {
-            title: 'ContestType',
+            title: '比赛类型',
             key: 'contest_type'
           },
           {
-            title: 'Rule',
+            title: '赛制',
             key: 'rule_type'
           },
           {
-            title: 'Creator',
+            title: '创建者',
             render: (h, data) => {
               return h('span', data.row.created_by.username)
             }

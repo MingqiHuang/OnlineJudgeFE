@@ -25,11 +25,11 @@ const vendors = [
 // clear old dll
 const globOptions = {cwd: resolve('static/js'), absolute: true};
 let oldDlls = glob.sync('vendor.dll.*.js', globOptions);
-console.log("cleaning old dll..")
+console.log("正在清理旧的dll...")
 oldDlls.forEach(f => {
   fs.unlink(f)
 })
-console.log("building ..")
+console.log("正在构建...")
 
 module.exports = {
   entry: {

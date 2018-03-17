@@ -11,9 +11,9 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="OI">OI</Dropdown-item>
-                <Dropdown-item name="ACM">ACM</Dropdown-item>
+                <Dropdown-item name="">全部</Dropdown-item>
+                <Dropdown-item name="OI">OI赛制</Dropdown-item>
+                <Dropdown-item name="ACM">ACM赛制</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
@@ -23,20 +23,20 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="0">UnderWay</Dropdown-item>
-                <Dropdown-item name="1">Not Started</Dropdown-item>
-                <Dropdown-item name="-1">Ended</Dropdown-item>
+                <Dropdown-item name="">全部</Dropdown-item>
+                <Dropdown-item name="0">正在进行</Dropdown-item>
+                <Dropdown-item name="1">尚未开始</Dropdown-item>
+                <Dropdown-item name="-1">已结束</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
           <li>
             <Input id="keyword" @on-enter="changeRoute" @on-click="changeRoute" v-model="query.keyword"
-                   icon="ios-search-strong" placeholder="Keyword"/>
+                   icon="ios-search-strong" placeholder="关键字"/>
           </li>
         </ul>
       </div>
-      <p id="no-contest" v-if="contests.length == 0">No contest</p>
+      <p id="no-contest" v-if="contests.length == 0">无比赛</p>
       <ol id="contest-list">
         <li v-for="contest in contests">
           <Row type="flex" justify="space-between" align="middle">
@@ -158,7 +158,7 @@
       goContest (contest) {
         this.cur_contest_id = contest.id
         if (contest.contest_type !== CONTEST_TYPE.PUBLIC && !this.isAuthenticated) {
-          this.$error('Please login first.')
+          this.$error('请先登录')
           this.$store.dispatch('changeModalStatus', {visible: true})
         } else {
           this.$router.push({name: 'contest-details', params: {contestID: contest.id}})

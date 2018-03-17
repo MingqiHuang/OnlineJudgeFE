@@ -7,22 +7,22 @@
         <Icon type="android-settings" size="20"></Icon>
         <div slot="content" id="switches">
           <p>
-            <span>Menu</span>
+            <span>菜单</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>Chart</span>
+            <span>排名</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>Auto Refresh(10s)</span>
+            <span>自动刷新（10s）</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <template v-if="isContestAdmin">
             <p>
-              <span>RealName</span>
+              <span>姓名</span>
               <i-switch v-model="showRealName"></i-switch>
             </p>
             <p>
-              <span>Force Update</span>
+              <span>强制刷新</span>
               <i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>
             </p>
           </template>
@@ -70,7 +70,7 @@
             }
           },
           {
-            title: 'User',
+            title: '用户',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -91,7 +91,7 @@
             }
           },
           {
-            title: 'AC / Total',
+            title: 'AC率',
             align: 'center',
             width: 100,
             render: (h, params) => {
@@ -111,7 +111,7 @@
             }
           },
           {
-            title: 'TotalTime',
+            title: '总时间',
             align: 'center',
             render: (h, params) => {
               return h('span', this.parseTotalTime(params.row.total_time))
@@ -121,7 +121,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Top 10 Teams',
+            text: '排名前10的团队',
             left: 'center'
           },
           dataZoom: [
@@ -136,7 +136,7 @@
           toolbox: {
             show: true,
             feature: {
-              saveAsImage: {show: true, title: 'save as image'}
+              saveAsImage: {show: true, title: '保存为图片'}
             },
             right: '5%'
           },
@@ -223,7 +223,7 @@
           data.push([this.contest.start_time, 0])
           // index here can be regarded as stacked accepted number count.
           for (let [index, value] of timeData.entries()) {
-            let realTime = moment(this.contest.start_time).add(value, 'seconds').format()
+            let realTime = moment(this.contest.start_time).add(value, '秒').format()
             data.push([realTime, index + 1])
           }
           seriesData.push({

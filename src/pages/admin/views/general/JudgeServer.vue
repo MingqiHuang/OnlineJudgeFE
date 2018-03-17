@@ -1,9 +1,9 @@
 <template>
   <div class="view">
-    <Panel title="Judge Server Token">
+    <Panel title="评测姬Token">
       <code>{{ token }}</code>
     </Panel>
-    <Panel title="Judge Server">
+    <Panel title="评测姬">
       <el-table
         :data="servers"
         :default-expand-all="true"
@@ -11,19 +11,19 @@
         <el-table-column
           type="expand">
           <template slot-scope="props">
-            <p>IP:
+            <p>IP：
               <el-tag type="success">{{ props.row.ip }}</el-tag>&nbsp;&nbsp;
-              Judger Version:
+              评测姬版本：
               <el-tag type="success">{{ props.row.judger_version }}</el-tag>
             </p>
-            <p>Service URL: <code>{{ props.row.service_url }}</code></p>
-            <p>Last Heartbeat: {{ props.row.last_heartbeat | localtime}}</p>
-            <p>Create Time: {{ props.row.create_time | localtime }}</p>
+            <p>服务URL：<code>{{ props.row.service_url }}</code></p>
+            <p>最后一次心跳：{{ props.row.last_heartbeat | localtime}}</p>
+            <p>创建时间：{{ props.row.create_time | localtime }}</p>
           </template>
         </el-table-column>
         <el-table-column
           prop="status"
-          label="Status">
+          label="状态">
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === 'normal' ? 'success' : 'danger'">
@@ -33,27 +33,27 @@
         </el-table-column>
         <el-table-column
           prop="hostname"
-          label="Hostname">
+          label="主机名">
         </el-table-column>
         <el-table-column
           prop="task_number"
-          label="Task Number">
+          label="任务数">
         </el-table-column>
         <el-table-column
           prop="cpu_core"
-          label="CPU Core">
+          label="CPU核数">
         </el-table-column>
         <el-table-column
           prop="cpu_usage"
-          label="CPU Usage">
+          label="CPU占用">
           <template slot-scope="scope">{{ scope.row.cpu_usage }}%</template>
         </el-table-column>
         <el-table-column
           prop="memory_usage"
-          label="Memory Usage">
+          label="内存占用">
           <template slot-scope="scope">{{ scope.row.memory_usage }}%</template>
         </el-table-column>
-        <el-table-column label="Disabled">
+        <el-table-column label="禁用评测姬">
           <template slot-scope="{row}">
             <el-switch v-model="row.is_disabled" @change="handleDisabledSwitch(row.id, row.is_disabled)"></el-switch>
           </template>

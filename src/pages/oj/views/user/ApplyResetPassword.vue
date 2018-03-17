@@ -1,10 +1,10 @@
 <template>
   <Panel :padding="30" class="container">
-    <div slot="title" class="center">Lost Password</div>
+    <div slot="title" class="center">忘记密码</div>
     <template v-if="!successApply">
       <Form :rules="ruleResetPassword" :model=formResetPassword ref="formResetPassword">
         <Form-item prop="email">
-          <Input v-model="formResetPassword.email" placeholder="Your Email Address" size="large">
+          <Input v-model="formResetPassword.email" placeholder="你的邮箱地址" size="large">
           <Icon type="ios-email-outline" slot="prepend"></Icon>
           </Input>
         </Form-item>
@@ -26,13 +26,13 @@
       <Button type="primary"
               @click="sendEmail"
               class="btn" long
-              :loading="btnLoading">Send Password Reset Email
+              :loading="btnLoading">发送密码重置邮件
       </Button>
     </template>
     <template v-else>
       <Alert type="success" show-icon>
         Success
-        <span slot="desc">Password reset mail has been sent to your email.</span>
+        <span slot="desc">密码重置邮件已发到你的邮箱垃圾桶</span>
       </Alert>
     </template>
   </Panel>
@@ -48,7 +48,7 @@
         if (value !== '') {
           api.checkUsernameOrEmail(undefined, value).then(res => {
             if (res.data.data.email === false) {
-              callback(new Error('The email doesn\'t exist'))
+              callback(new Error('邮箱不存在'))
             } else {
               callback()
             }

@@ -86,7 +86,7 @@ var server
 var portfinder = require('portfinder')
 portfinder.basePort = port
 
-console.log('> Starting dev server...')
+console.log('> 正在启动开发服务器...')
 devMiddleware.waitUntilValid(() => {
   portfinder.getPort((err, port) => {
     if (err) {
@@ -94,7 +94,7 @@ devMiddleware.waitUntilValid(() => {
     }
     process.env.PORT = port
     var uri = 'http://localhost:' + port
-    console.log('> Listening at ' + uri + '\n')
+    console.log('> 正在监听' + uri + '\n')
     // when env is testing, don't need open it
     if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
       opn(uri)

@@ -13,36 +13,36 @@
         </el-row>
         <hr/>
         <div class="last-info">
-          <p class="last-info-title">Last Login</p>
+          <p class="last-info-title">上次登录</p>
           <el-form label-width="80px" class="last-info-body">
-            <el-form-item label="Time:">
+            <el-form-item label="时间：">
               <span>{{session.last_activity | localtime}}</span>
             </el-form-item>
-            <el-form-item label="IP:">
+            <el-form-item label="IP：">
               <span>{{session.ip}}</span>
             </el-form-item>
-            <el-form-item label="OS">
+            <el-form-item label="系统：">
               <span>{{os}}</span>
             </el-form-item>
-            <el-form-item label="Browser:">
+            <el-form-item label="浏览器：">
               <span>{{browser}}</span>
             </el-form-item>
           </el-form>
         </div>
       </el-card>
       <panel title="System Overview" v-if="isSuperAdmin">
-        <p>Judge Server:  {{infoData.judge_server_count}}</p>
-        <p>HTTPS Status:
+        <p>评测机：  {{infoData.judge_server_count}}</p>
+        <p>HTTPS状态：
           <el-tag :type="https ? 'success' : 'danger'" size="small">
             {{ https ? 'Enabled' : 'Disabled'}}
           </el-tag>
         </p>
-        <p>Force HTTPS:
+        <p>强制HTTPS：
           <el-tag :type="forceHttps ? 'success' : 'danger'" size="small">
             {{forceHttps ? 'Enabled' : 'Disabled'}}
           </el-tag>
         </p>
-        <p>CDN HOST:
+        <p>CDN服务器：
           <el-tag :type="cdn ? 'success' : 'warning'" size="small">
             {{cdn ? cdn : 'Not Use'}}
           </el-tag>
@@ -52,19 +52,19 @@
 
     <el-col :md="14" :lg="16" v-if="isSuperAdmin">
       <div class="info-container">
-        <info-card color="#909399" icon="el-icon-fa-users" message="Total Users" iconSize="30px" class="info-item"
+        <info-card color="#909399" icon="el-icon-fa-users" message="用户总数" iconSize="30px" class="info-item"
                    :value="infoData.user_count"></info-card>
-        <info-card color="#67C23A" icon="el-icon-fa-list" message="Today Submissions" class="info-item"
+        <info-card color="#67C23A" icon="el-icon-fa-list" message="今日提交" class="info-item"
                    :value="infoData.today_submission_count"></info-card>
-        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="Recent Contests" class="info-item"
+        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="最近比赛" class="info-item"
                    :value="infoData.recent_contest_count"></info-card>
       </div>
       <panel style="margin-top: 5px">
         <span slot="title" v-loading="loadingReleases">Release Notes
         <el-popover placement="right" trigger="hover">
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
-          <p>Please upgrade to the latest version to enjoy the new features. </p>
-          <p>Reference: <a href="http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade" target="_blank">
+          <p>请更新到最新版以获得新特性（没有卵用，不要更新）。</p>
+          <p>参考：<a href="http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade" target="_blank">
           http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade</a>
           </p>
         </el-popover>
@@ -74,12 +74,12 @@
           <el-collapse-item :name="index+1">
             <template slot="title">
               <div v-if="release.new_version">{{release.title}}
-                <el-tag size="mini" type="success">New Version</el-tag>
+                <el-tag size="mini" type="success">新版本</el-tag>
               </div>
               <span v-else>{{release.title}}</span>
             </template>
-            <p>Level: {{release.level}}</p>
-            <p>Details: </p>
+            <p>级别：{{release.level}}</p>
+            <p>详情：</p>
             <div class="release-body">
               <ul v-for="detail in release.details">
                 <li v-html="detail"></li>
@@ -177,7 +177,7 @@
       },
       os () {
         let b = browserDetector(this.session.user_agent)
-        return b.os ? b.os : 'Unknown'
+        return b.os ? b.os : '未知'
       }
     }
   }

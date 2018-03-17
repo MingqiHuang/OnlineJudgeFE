@@ -26,7 +26,7 @@ function getEntries () {
 
 // get all entries
 const entries = getEntries()
-console.log("All entries: ")
+console.log("全部记录： ")
 Object.keys(entries).forEach(entry => {
   console.log(entry)
   entries[entry].forEach(ele => {

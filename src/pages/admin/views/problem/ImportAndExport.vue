@@ -1,6 +1,6 @@
 <template>
   <div>
-    <panel title="Export Problems">
+    <panel title="导出问题">
       <el-table :data="problems"
                 v-loading="loadingProblems" @selection-change="handleSelectionChange">
         <el-table-column
@@ -8,26 +8,26 @@
           width="60">
         </el-table-column>
         <el-table-column
-          label="ID"
+          label="编号"
           width="100"
           prop="id">
         </el-table-column>
         <el-table-column
-          label="DisplayID"
+          label="显示编号"
           width="200"
           prop="_id">
         </el-table-column>
         <el-table-column
-          label="Title"
+          label="标题"
           prop="title">
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="作者">
         </el-table-column>
         <el-table-column
           prop="create_time"
-          label="Create Time">
+          label="创建时间">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
@@ -36,7 +36,7 @@
 
       <div class="panel-options">
         <el-button type="primary" size="small" v-show="selected_problems.length"
-                   @click="exportProblems" icon="el-icon-fa-arrow-down">Export
+                   @click="exportProblems" icon="el-icon-fa-arrow-down">导出
         </el-button>
         <el-pagination
           class="page"
@@ -47,7 +47,7 @@
         </el-pagination>
       </div>
     </panel>
-    <panel title="Import Problems">
+    <panel title="导入问题">
       <el-upload
         action="/api/admin/import_problem"
         name="file"
@@ -55,7 +55,7 @@
         :with-credentials="true"
         :on-success="uploadSucceeded"
         :on-error="uploadFailed">
-        <el-button size="small" type="primary" icon="el-icon-fa-upload">Choose File</el-button>
+        <el-button size="small" type="primary" icon="el-icon-fa-upload">选择文件</el-button>
       </el-upload>
     </panel>
   </div>
@@ -107,12 +107,12 @@
         if (response.error) {
           this.$error(response.data)
         } else {
-          this.$success('Successfully imported ' + response.data.import_count + ' problems')
+          this.$success('成功导入了' + response.data.import_count + '个问题')
           this.getProblems()
         }
       },
       uploadFailed () {
-        this.$error('Upload failed')
+        this.$error('上传失败')
       }
     }
   }

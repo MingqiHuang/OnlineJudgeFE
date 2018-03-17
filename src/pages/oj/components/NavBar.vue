@@ -4,42 +4,42 @@
       <div class="logo"><span>{{website.website_name}}</span></div>
       <Menu-item name="/">
         <Icon type="home"></Icon>
-        Home
+        首页
       </Menu-item>
       <Menu-item name="/problems">
         <Icon type="ios-keypad"></Icon>
-        Problems
+        题目
       </Menu-item>
       <Menu-item name="/contests">
         <Icon type="trophy"></Icon>
-        Contests
+        比赛
       </Menu-item>
       <Menu-item name="/status">
         <Icon type="ios-pulse-strong"></Icon>
-        Status
+        评测状态
       </Menu-item>
       <Submenu name="">
         <template slot="title">
           <Icon type="podium"></Icon>
-          Rank
+          排名
         </template>
         <Menu-item name="/acm-rank">
-          ACM Rank
+          ACM赛制排名
         </Menu-item>
         <Menu-item name="/oi-rank">
-          OI Rank
+          OI赛制排名
         </Menu-item>
       </Submenu>
       <Submenu name="">
         <template slot="title">
           <Icon type="information-circled"></Icon>
-          About
+          关于
         </template>
         <Menu-item name="/about">
-          Judger
+          评测姬
         </Menu-item>
         <Menu-item name="/FAQ">
-          FAQ
+          常见问题
         </Menu-item>
       </Submenu>
       <template v-if="!isAuthenticated">
@@ -47,13 +47,13 @@
           <Button type="ghost"
                   ref="loginBtn"
                   shape="circle"
-                  @click="handleBtnClick('login')">Login
+                  @click="handleBtnClick('login')">登录
           </Button>
           <Button v-if="website.allow_register"
                   type="ghost"
                   shape="circle"
                   @click="handleBtnClick('register')"
-                  style="margin-left: 5px;">Register
+                  style="margin-left: 5px;">注册
           </Button>
         </div>
       </template>
@@ -63,17 +63,17 @@
             <Icon type="arrow-down-b"></Icon>
           </Button>
           <Dropdown-menu slot="list">
-            <Dropdown-item name="/user-home">Home</Dropdown-item>
-            <Dropdown-item name="/status?myself=1">Submissions</Dropdown-item>
-            <Dropdown-item name="/setting/profile">Settings</Dropdown-item>
-            <Dropdown-item v-if="isAdminRole" name="/admin">Management</Dropdown-item>
-            <Dropdown-item divided name="/logout">Logout</Dropdown-item>
+            <Dropdown-item name="/user-home">首页</Dropdown-item>
+            <Dropdown-item name="/status?myself=1">提交记录</Dropdown-item>
+            <Dropdown-item name="/setting/profile">设置</Dropdown-item>
+            <Dropdown-item v-if="isAdminRole" name="/admin">管理</Dropdown-item>
+            <Dropdown-item divided name="/logout">注销</Dropdown-item>
           </Dropdown-menu>
         </Dropdown>
       </template>
     </Menu>
     <Modal v-model="modalVisible" :width="400">
-      <div slot="header" class="modal-title">Welcome to {{website.website_name_shortcut}}</div>
+      <div slot="header" class="modal-title">欢迎来到 {{website.website_name_shortcut}}</div>
       <component :is="modalStatus.mode" v-if="modalVisible"></component>
       <div slot="footer" style="display: none"></div>
     </Modal>

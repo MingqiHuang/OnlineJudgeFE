@@ -32,7 +32,7 @@ export default {
   methods: {
     click () {
       if (!screenfull.enabled) {
-        this.$warning('Your browser doesn\'t support fullscreen')
+        this.$warning('你的浏览器不支持全屏')
         return false
       }
       screenfull.toggle()

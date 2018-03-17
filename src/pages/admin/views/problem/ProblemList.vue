@@ -1,11 +1,11 @@
 <template>
   <div class="view">
-    <Panel :title="contestId ? 'Contest Problem List' : 'Problem List'">
+    <Panel :title="contestId ? '比赛题目列表' : '题目列表'">
       <div slot="header">
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="关键字">
         </el-input>
       </div>
       <el-table
@@ -22,7 +22,7 @@
         </el-table-column>
         <el-table-column
           width="150"
-          label="Display ID">
+          label="显示编号">
           <template slot-scope="{row}">
             <span v-show="!row.isEditing">{{row._id}}</span>
             <el-input v-show="row.isEditing" v-model="row._id"
@@ -43,12 +43,12 @@
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="作者">
         </el-table-column>
         <el-table-column
           width="200"
           prop="create_time"
-          label="Create Time">
+          label="创建时间">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
@@ -56,7 +56,7 @@
         <el-table-column
           width="100"
           prop="visible"
-          label="Visible">
+          label="可见性">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.visible"
                        active-text=""
@@ -67,7 +67,7 @@
         </el-table-column>
         <el-table-column
           fixed="right"
-          label="Operation"
+          label="操作"
           width="250">
           <div slot-scope="scope">
             <icon-btn name="Edit" icon="edit" @click.native="goEdit(scope.row.id)"></icon-btn>
@@ -82,11 +82,11 @@
       </el-table>
       <div class="panel-options">
         <el-button type="primary" size="small"
-                   @click="goCreateProblem" icon="el-icon-plus">Create
+                   @click="goCreateProblem" icon="el-icon-plus">创建
         </el-button>
         <el-button v-if="contestId" type="primary"
                    size="small" icon="el-icon-plus"
-                   @click="addProblemDialogVisible = true">Add From Public Problem
+                   @click="addProblemDialogVisible = true">从公开题目中添加
         </el-button>
         <el-pagination
           class="page"
@@ -97,7 +97,7 @@
         </el-pagination>
       </div>
     </Panel>
-    <el-dialog title="Sure to update the problem? "
+    <el-dialog title="确定更新题目？"
                width="20%"
                :visible.sync="InlineEditDialogVisible"
                @close-on-click-modal="false">
@@ -110,7 +110,7 @@
         <save @click.native="updateProblem(currentRow)"></save>
       </span>
     </el-dialog>
-    <el-dialog title="Add Contest Problem"
+    <el-dialog title="添加比赛题目"
                v-if="contestId"
                width="80%"
                :visible.sync="addProblemDialogVisible"
@@ -197,7 +197,7 @@
         })
       },
       deleteProblem (id) {
-        this.$confirm('You can only delete the problem that doesn\'t have submissions, continue?', 'Delete Problem', {
+        this.$confirm('只能删除没有提交的题目，继续？', '删除题目', {
           type: 'warning'
         }).then(() => {
           let funcName = this.routeName === 'problem-list' ? 'deleteProblem' : 'deleteContestProblem'
@@ -209,7 +209,7 @@
         })
       },
       makeContestProblemPublic (problemID) {
-        this.$prompt('Please input display id for the public problem', 'confirm').then(({value}) => {
+        this.$prompt('请输入公开题目的显示编号', '确认').then(({value}) => {
           api.makeContestProblemPublic({id: problemID, display_id: value}).catch()
         }, () => {
         })

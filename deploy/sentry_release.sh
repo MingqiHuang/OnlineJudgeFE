@@ -4,7 +4,7 @@ DATE=`date +%Y%m%d`
 COMMIT=`git rev-parse HEAD`
 VERSION="$DATE-${COMMIT:0:5}"
 
-echo "Current version is $VERSION"
+echo "当前版本是 $VERSION"
 
 if [ ! -z $USE_SENTRY ] && [ $USE_SENTRY == '1' ]; then
 
