@@ -38,7 +38,7 @@
           <el-table-column
             width="100"
             prop="visible"
-            label="Visible">
+            label="可见性">
             <template slot-scope="scope">
               <el-switch v-model="scope.row.visible"
                          active-text=""
@@ -49,7 +49,7 @@
           </el-table-column>
           <el-table-column
             fixed="right"
-            label="Option"
+            label="选项"
             width="200">
             <div slot-scope="scope">
               <icon-btn name="Edit" icon="edit" @click.native="openAnnouncementDialog(scope.row.id)"></icon-btn>

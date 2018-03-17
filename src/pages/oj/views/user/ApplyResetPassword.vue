@@ -11,7 +11,7 @@
         <Form-item prop="captcha" style="margin-bottom:10px">
           <div class="oj-captcha">
             <div class="oj-captcha-code">
-              <Input v-model="formResetPassword.captcha" placeholder="Captcha" size="large">
+              <Input v-model="formResetPassword.captcha" placeholder="验证码" size="large">
               <Icon type="ios-lightbulb-outline" slot="prepend"></Icon>
               </Input>
             </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <panel>
-      <span slot="title">Prune Test Case
+      <span slot="title">删除重复测试数据
         <el-popover placement="right" trigger="hover">
           这些测试数据不属于任何题目，可以安全删除。
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
@@ -19,11 +19,11 @@
           label="测试数据编号">
         </el-table-column>
         <el-table-column
-          label="Option"
+          label="选项"
           fixed="right"
           width="200">
           <template slot-scope="{row}">
-            <icon-btn name="Delete" icon="trash" @click.native="deleteTestCase(row.id)"></icon-btn>
+            <icon-btn name="删除" icon="trash" @click.native="deleteTestCase(row.id)"></icon-btn>
           </template>
         </el-table-column>
       </el-table>

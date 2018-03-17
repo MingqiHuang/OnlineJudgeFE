@@ -33,7 +33,7 @@
         </el-table-column>
         <el-table-column
           prop="title"
-          label="Title">
+          label="标题">
           <template slot-scope="{row}">
             <span v-show="!row.isEditing">{{row.title}}</span>
             <el-input v-show="row.isEditing" v-model="row.title"

@@ -51,8 +51,8 @@
 
         <el-table-column fixed="right" label="选项" width="200">
           <template slot-scope="{row}">
-            <icon-btn name="Edit" icon="edit" @click.native="openUserDialog(row.id)"></icon-btn>
-            <icon-btn name="Delete" icon="trash" @click.native="deleteUsers([row.id])"></icon-btn>
+            <icon-btn name="编辑" icon="edit" @click.native="openUserDialog(row.id)"></icon-btn>
+            <icon-btn name="删除" icon="trash" @click.native="deleteUsers([row.id])"></icon-btn>
           </template>
         </el-table-column>
       </el-table>
@@ -107,7 +107,7 @@
           </el-button>
           <el-button type="warning" size="small"
                      icon="el-icon-fa-undo"
-                     @click="handleResetData">Reset Data
+                     @click="handleResetData">重置数据
           </el-button>
           <el-pagination
             class="page"
@@ -152,7 +152,7 @@
         </el-row>
 
         <el-form-item>
-          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Generate
+          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">生成
           </el-button>
           <span class="userPreview" v-if="formGenerateUser.number_from && formGenerateUser.number_to &&
                                           formGenerateUser.number_from <= formGenerateUser.number_to">

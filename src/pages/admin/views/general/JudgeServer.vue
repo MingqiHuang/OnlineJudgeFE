@@ -13,7 +13,7 @@
           <template slot-scope="props">
             <p>IP：
               <el-tag type="success">{{ props.row.ip }}</el-tag>&nbsp;&nbsp;
-              评测姬版本：
+              评测器版本：
               <el-tag type="success">{{ props.row.judger_version }}</el-tag>
             </p>
             <p>服务URL：<code>{{ props.row.service_url }}</code></p>
@@ -27,7 +27,7 @@
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === 'normal' ? 'success' : 'danger'">
-              {{ scope.row.status === 'normal' ? 'Normal' : 'Abnormal' }}
+              {{ scope.row.status === 'normal' ? '正常' : '不正常' }}
             </el-tag>
           </template>
         </el-table-column>
@@ -53,16 +53,16 @@
           label="内存占用">
           <template slot-scope="scope">{{ scope.row.memory_usage }}%</template>
         </el-table-column>
-        <el-table-column label="禁用评测姬">
+        <el-table-column label="禁用评测机">
           <template slot-scope="{row}">
             <el-switch v-model="row.is_disabled" @change="handleDisabledSwitch(row.id, row.is_disabled)"></el-switch>
           </template>
         </el-table-column>
         <el-table-column
           fixed="right"
-          label="Options">
+          label="选项">
           <template slot-scope="scope">
-            <icon-btn name="Delete" icon="trash" @click.native="deleteJudgeServer(scope.row.hostname)"></icon-btn>
+            <icon-btn name="删除" icon="trash" @click.native="deleteJudgeServer(scope.row.hostname)"></icon-btn>
           </template>
         </el-table-column>
       </el-table>

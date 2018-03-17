@@ -305,7 +305,7 @@
         }
       },
       status () {
-        return this.formFilter.result === '' ? 'Status' : JUDGE_STATUS[this.formFilter.result].name
+        return this.formFilter.result === '' ? '状态' : JUDGE_STATUS[this.formFilter.result].name
       },
       rejudgeColumnVisible () {
         return !this.contestID && this.user.admin_type === USER_TYPE.SUPER_ADMIN
