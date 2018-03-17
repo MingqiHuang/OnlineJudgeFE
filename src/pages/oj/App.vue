@@ -9,7 +9,7 @@
         <p v-html="website.website_footer"></p>
         <p>Powered by <a href="https://github.com/QingdaoU/OnlineJudge">OnlineJudge</a>
           <span v-if="version">&nbsp; Version: {{ version }}</span>&nbsp;
-          ÓÉ Hatsune Miku ¶ş´Î¿ª·¢
+          ç”± Hatsune Miku äºŒæ¬¡å¼€å‘
         </p>
       </div>
     </div>
