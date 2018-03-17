@@ -1,7 +1,7 @@
 <template>
   <Panel shadow :padding="10">
     <div slot="title">
-      {{title}}
+      公告
     </div>
     <div slot="extra">
       <Button v-if="listVisible" type="info" @click="init" :loading="btnLoading">刷新</Button>
