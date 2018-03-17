@@ -1,16 +1,16 @@
 <template>
   <div class="view">
-    <Panel title="User ">
+    <Panel title="用户">
       <div slot="header">
         <el-row :gutter="20">
           <el-col :span="8">
             <el-button v-show="selectedUsers.length"
                        type="warning" icon="el-icon-fa-trash"
-                       @click="deleteUsers(selectedUserIDs)">Delete
+                       @click="deleteUsers(selectedUserIDs)">删除
             </el-button>
           </el-col>
           <el-col :span="selectedUsers.length ? 16: 24">
-            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="Keywords"></el-input>
+            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="关键词"></el-input>
           </el-col>
         </el-row>
       </div>
@@ -70,8 +70,7 @@
     <Panel>
       <span slot="title">导入用户
         <el-popover placement="right" trigger="hover">
-          <p>只支持导入不含表头的CSV文件，请参照<a
-            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users"></a>以了解详情。</p>
+          <p>只支持导入不含表头的CSV文件，请参照<a><href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users"></a>以了解详情。</p>
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
         </el-popover>
       </span>
@@ -228,7 +227,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="被禁用">
+            <el-form-item label="禁用">
               <el-switch
                 v-model="user.is_disabled"
                 active-text=""

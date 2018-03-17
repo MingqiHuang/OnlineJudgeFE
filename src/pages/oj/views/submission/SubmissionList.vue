@@ -22,8 +22,8 @@
 
             <li>
               <i-switch size="large" v-model="formFilter.myself" @on-change="handleQueryChange">
-                <span slot="open">我的记录</span>
-                <span slot="close">全部记录</span>
+                <span slot="open">我的</span>
+                <span slot="close">全部</span>
               </i-switch>
             </li>
             <li>
