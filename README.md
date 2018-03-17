@@ -1,4 +1,4 @@
-# OnlineJudge Front End
+# OnlineJudge Front End Chinese Version
 [![vue](https://img.shields.io/badge/vue-2.5.13-blue.svg?style=flat-square)](https://github.com/vuejs/vue)
 [![vuex](https://img.shields.io/badge/vuex-3.0.1-blue.svg?style=flat-square)](https://vuex.vuejs.org/)
 [![echarts](https://img.shields.io/badge/echarts-3.8.3-blue.svg?style=flat-square)](https://github.com/ecomfe/echarts)
@@ -18,7 +18,7 @@
 
 ## Get Started
 
-Install nodejs **v6.11** first.
+Install Node.js **v6.11** first.
 
 ```bash
 npm install
@@ -32,7 +32,32 @@ export TARGET=http://Your-backend
 # serve with hot reload at localhost:8080
 npm run dev
 ```
+Then you can get a frontend preview at ``localhost:8080``, that means, nothing will be loaded except the main frame, you can only test if the website works or not, if you translated the site, you can test if there's any encoding problem.
 
+After testing, use ``Ctrl + C`` to stop the develop server. If you would like to publish it to the production environment, please follow lines below:
+
+```bash
+npm run build
+docker cp ./dist oj-backend:/app/
+```
+
+After this, your site is updated. However if you reload these pages, you may find that it keeps loading the main page, in this case, please execute commands below:
+
+```bash
+docker exec -it oj-backend /bin/sh
+```
+
+And under the prompt of docker, maybe ``/app/`` or things like that, execute command:
+
+```bash
+cd /app/deploy/
+./entrypoint.sh
+exit
+```
+
+You don't need to care about the result of the script, just refresh the page, and it would work.
+
+In fact we restarted the nginix server by running script above.
 ## Screenshots
 
 [Check here.](https://github.com/QingdaoU/OnlineJudge/tree/2.0)
