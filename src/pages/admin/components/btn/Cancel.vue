@@ -1,5 +1,5 @@
 <template>
-  <el-button plain type="primary">È¡Ïû</el-button>
+  <el-button plain type="primary">å–æ¶ˆ</el-button>
 </template>
 <script>
   export default{
