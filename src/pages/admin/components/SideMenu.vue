@@ -4,25 +4,25 @@
     <div class="logo">
       <img src="../../../assets/logo.svg" alt="oj admin"/>
     </div>
-    <el-menu-item index="/"><i class="el-icon-fa-dashboard"></i>ÒÇ±íÅÌ</el-menu-item>
+    <el-menu-item index="/"><i class="el-icon-fa-dashboard"></i>ä»ªè¡¨ç›˜</el-menu-item>
     <el-submenu v-if="isSuperAdmin" index="general">
-      <template slot="title"><i class="el-icon-menu"></i>Ö÷ÒªÐÅÏ¢</template>
-      <el-menu-item index="/user">ÓÃ»§</el-menu-item>
-      <el-menu-item index="/announcement">¹«¸æ</el-menu-item>
-      <el-menu-item index="/conf">ÏµÍ³ÉèÖÃ</el-menu-item>
-      <el-menu-item index="/judge-server">ÆÀ²â»ú</el-menu-item>
-      <el-menu-item index="/prune-test-case">É¾³ýÖØ¸´²âÊÔÊý¾Ý</el-menu-item>
+      <template slot="title"><i class="el-icon-menu"></i>ä¸»è¦ä¿¡æ¯</template>
+      <el-menu-item index="/user">ç”¨æˆ·</el-menu-item>
+      <el-menu-item index="/announcement">å…¬å‘Š</el-menu-item>
+      <el-menu-item index="/conf">ç³»ç»Ÿè®¾ç½®</el-menu-item>
+      <el-menu-item index="/judge-server">è¯„æµ‹æœº</el-menu-item>
+      <el-menu-item index="/prune-test-case">åˆ é™¤é‡å¤æµ‹è¯•æ•°æ®</el-menu-item>
     </el-submenu>
     <el-submenu index="problem" v-if="hasProblemPermission">
-      <template slot="title"><i class="el-icon-fa-bars"></i>ÎÊÌâ</template>
-      <el-menu-item index="/problems">ÌâÄ¿ÁÐ±í</el-menu-item>
-      <el-menu-item index="/problem/create">´´½¨ÎÊÌâ</el-menu-item>
-      <el-menu-item index="/problem/batch_ops">µ¼Èë/µ¼³ö</el-menu-item>
+      <template slot="title"><i class="el-icon-fa-bars"></i>é—®é¢˜</template>
+      <el-menu-item index="/problems">é¢˜ç›®åˆ—è¡¨</el-menu-item>
+      <el-menu-item index="/problem/create">åˆ›å»ºé—®é¢˜</el-menu-item>
+      <el-menu-item index="/problem/batch_ops">å¯¼å…¥/å¯¼å‡º</el-menu-item>
     </el-submenu>
     <el-submenu index="contest">
-      <template slot="title"><i class="el-icon-fa-trophy"></i>±ÈÈü</template>
-      <el-menu-item index="/contest">±ÈÈüÁÐ±í</el-menu-item>
-      <el-menu-item index="/contest/create">´´½¨±ÈÈü</el-menu-item>
+      <template slot="title"><i class="el-icon-fa-trophy"></i>æ¯”èµ›</template>
+      <el-menu-item index="/contest">æ¯”èµ›åˆ—è¡¨</el-menu-item>
+      <el-menu-item index="/contest/create">åˆ›å»ºæ¯”èµ›</el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
