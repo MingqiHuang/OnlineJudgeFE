@@ -38,8 +38,8 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="比赛赛制">
-              <el-radio class="radio" v-model="contest.rule_type" label="ACM赛制" :disabled="disableRuleType">ACM</el-radio>
-              <el-radio class="radio" v-model="contest.rule_type" label="OI赛制" :disabled="disableRuleType">OI</el-radio>
+              <el-radio class="radio" v-model="contest.rule_type" label="ACM" :disabled="disableRuleType">ACM</el-radio>
+              <el-radio class="radio" v-model="contest.rule_type" label="OI" :disabled="disableRuleType">OI</el-radio>
             </el-form-item>
           </el-col>
           <el-col :span="8">
