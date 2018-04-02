@@ -47,9 +47,22 @@
         </el-pagination>
       </div>
     </panel>
-    <panel title="导入问题">
+    <panel title="导入QDUOJ问题">
       <el-upload
         action="/api/admin/import_problem"
+        name="file"
+        :show-file-list="false"
+        :with-credentials="true"
+        :on-success="uploadSucceeded"
+        :on-error="uploadFailed">
+        <el-button size="small" type="primary" icon="el-icon-fa-upload">选择文件</el-button>
+      </el-upload>
+    </panel>
+    
+    
+    <panel title="Import FPS Problems">
+      <el-upload
+        action="/api/admin/import_fps"
         name="file"
         :show-file-list="false"
         :with-credentials="true"
