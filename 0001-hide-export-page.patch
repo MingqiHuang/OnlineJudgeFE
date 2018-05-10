@@ -1,0 +1,24 @@
+From 81f6f4be49cc688064342b663e4ed054ac5d1c47 Mon Sep 17 00:00:00 2001
+From: virusdefender <virusdefender@outlook.com>
+Date: Fri, 23 Mar 2018 20:09:06 +0800
+Subject: [PATCH 1/2] hide export page
+
+---
+ src/pages/admin/components/SideMenu.vue | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/pages/admin/components/SideMenu.vue b/src/pages/admin/components/SideMenu.vue
+index 2c31e07..3b190af 100644
+--- a/src/pages/admin/components/SideMenu.vue
++++ b/src/pages/admin/components/SideMenu.vue
+@@ -17,7 +17,6 @@
+       <template slot="title"><i class="el-icon-fa-bars"></i>Problem</template>
+       <el-menu-item index="/problems">Problem List</el-menu-item>
+       <el-menu-item index="/problem/create">Create Problem</el-menu-item>
+-      <el-menu-item index="/problem/batch_ops">Import / Export</el-menu-item>
+     </el-submenu>
+     <el-submenu index="contest">
+       <template slot="title"><i class="el-icon-fa-trophy"></i>Contest</template>
+-- 
+2.10.0.windows.1
+
