@@ -182,7 +182,7 @@
       },
       reselect () {
         this.$Modal.confirm({
-          content: '你确定放弃更改吗？,
+          content: '你确定放弃更改吗？',
           onOk: () => {
             this.avatarOption.imgSrc = ''
           }
