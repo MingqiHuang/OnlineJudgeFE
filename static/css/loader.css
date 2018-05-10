@@ -127,3 +127,8 @@ body {
 #app-loader .last {
   margin-right: 0;
 }
+
+.MathJax{
+  outline: 0;
+  font-size: 16px;
+}

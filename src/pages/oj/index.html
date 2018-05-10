@@ -9,13 +9,6 @@
   <link rel="shortcut icon" href="/public/website/favicon.ico">
 
   <link href="/static/css/loader.css" rel="stylesheet">
-  <script>
-    // IE 10 and earlier
-    if (window.navigator.userAgent.indexOf('MSIE ') > 0 &&
-      window.confirm('Your browser is not supported, click \'OK\' to update')) {
-      window.location = 'http://outdatedbrowser.com'
-    }
-  </script>
 
   <script type="text/x-mathjax-config">
    MathJax.Hub.Config({
@@ -28,13 +21,15 @@
         displayMath: [ ["$$","$$"] ],
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']
     },
+    showProcessingMessages: false,
+    messageStyle: "none"
     "HTML-CSS": {
         availableFonts: ["STIX","TeX"],
         showMathMenu: false
     }
    });
   </script>
-  <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="/static/MathJax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="app-loader">
