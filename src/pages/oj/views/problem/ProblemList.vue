@@ -130,6 +130,7 @@
           },
           {
             title: '难度',
+            width: 45,
             render: (h, params) => {
               let t = params.row.difficulty
               let color = 'blue'
@@ -144,12 +145,12 @@
           },
           {
             title: '总提交',
-            width: 80,
+            width: 100,
             key: 'submission_number'
           },
           {
             title: 'AC率',
-            width: 80,
+            width: 100,
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }
