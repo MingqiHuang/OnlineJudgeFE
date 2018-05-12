@@ -91,7 +91,7 @@
           {
             title: '#',
             key: '_id',
-            width: 120,
+            width: 100,
             render: (h, params) => {
               return h('Button', {
                 props: {
@@ -144,10 +144,12 @@
           },
           {
             title: '总提交',
+            width: 80,
             key: 'submission_number'
           },
           {
             title: 'AC率',
+            width: 80,
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }
