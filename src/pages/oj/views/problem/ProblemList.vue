@@ -130,7 +130,7 @@
           },
           {
             title: '难度',
-            width: 45,
+            width: 80,
             render: (h, params) => {
               let t = params.row.difficulty
               let color = 'blue'
