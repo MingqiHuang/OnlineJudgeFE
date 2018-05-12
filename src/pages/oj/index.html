@@ -9,27 +9,26 @@
   <link rel="shortcut icon" href="/public/website/favicon.ico">
 
   <link href="/static/css/loader.css" rel="stylesheet">
-
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({
+  <script src="/static/MathJax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script>
+    MathJax.Hub.Config({
     showProcessingMessages: false,
     messageStyle: "none",
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
     tex2jax: {
-        inlineMath:  [ ["$", "$"] ],
-        displayMath: [ ["$$","$$"] ],
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"markdown-editor"
     },
-    showProcessingMessages: false,
-    messageStyle: "none"
     "HTML-CSS": {
         availableFonts: ["STIX","TeX"],
         showMathMenu: false
     }
-   });
+  });
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
   </script>
-  <script src="/static/MathJax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="app-loader">

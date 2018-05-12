@@ -152,7 +152,7 @@
 
     .drop-menu {
       position: absolute;
-      right: 40px;
+      right: 10px;
       &-title {
         font-size: 16px;
       }
