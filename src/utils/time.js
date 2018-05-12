@@ -9,15 +9,15 @@ function utcToLocal (utcDt, format = 'YYYY-M-D  HH:mm:ss') {
 function duration (startTime, endTime) {
   let start = moment(startTime)
   let end = moment(endTime)
-  let duration = moment.duration(start.diff(end, '秒'), '秒')
+  let duration = moment.duration(start.diff(end, 'seconds'), 'seconds')
   if (duration.days() !== 0) {
     return duration.humanize()
   }
-  return Math.abs(duration.asHours().toFixed(1)) + '小时'
+  return Math.abs(duration.asHours().toFixed(1)) + ' hours'
 }
 
 function secondFormat (seconds) {
-  let m = moment.duration(seconds, '秒')
+  let m = moment.duration(seconds, 'seconds')
   return m.hours() + ':' + m.minutes() + ':' + m.seconds()
 }
 
