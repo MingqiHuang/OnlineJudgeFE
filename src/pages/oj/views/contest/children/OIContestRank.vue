@@ -9,19 +9,19 @@
           <p>
             <span>菜单</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>排名表</span>
+            <span>表格</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>自动刷新（10s）</span>
+            <span>自动刷新(10s)</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <p v-if="isContestAdmin">
-            <span>姓名</span>
+            <span>真实姓名</span>
             <i-switch v-model="showRealName"></i-switch>
           </p>
           <p>
-            <Button type="primary" size="small" @click="downloadRankCSV">下载成绩表格</Button>
+            <Button type="primary" size="small" @click="downloadRankCSV">download csv</Button>
           </p>
         </div>
       </Poptip>
@@ -105,7 +105,7 @@
         dataRank: [],
         options: {
           title: {
-            text: '排名前十的选手',
+            text: '排名前10的选手',
             left: 'center'
           },
           tooltip: {

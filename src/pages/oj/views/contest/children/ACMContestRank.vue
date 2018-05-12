@@ -9,16 +9,16 @@
           <p>
             <span>菜单</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>排名</span>
+            <span>表格</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>自动刷新（10s）</span>
+            <span>自动刷新(10s)</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <template v-if="isContestAdmin">
             <p>
-              <span>姓名</span>
+              <span>真实姓名</span>
               <i-switch v-model="showRealName"></i-switch>
             </p>
             <p>
@@ -27,7 +27,7 @@
             </p>
           </template>
           <template>
-            <Button type="primary" size="small" @click="downloadRankCSV">下载成绩表格</Button>
+            <Button type="primary" size="small" @click="downloadRankCSV">download csv</Button>
           </template>
         </div>
       </Poptip>
@@ -73,7 +73,7 @@
             }
           },
           {
-            title: '用户',
+            title: '姓名',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -114,7 +114,7 @@
             }
           },
           {
-            title: '总时间',
+            title: '总用时',
             align: 'center',
             render: (h, params) => {
               return h('span', this.parseTotalTime(params.row.total_time))
@@ -124,7 +124,7 @@
         dataRank: [],
         options: {
           title: {
-            text: '排名前10的团队',
+            text: '排名前10的队伍',
             left: 'center'
           },
           dataZoom: [
@@ -139,7 +139,7 @@
           toolbox: {
             show: true,
             feature: {
-              saveAsImage: {show: true, title: '保存为图片'}
+              saveAsImage: {show: true, title: 'save as image'}
             },
             right: '5%'
           },
@@ -226,7 +226,7 @@
           data.push([this.contest.start_time, 0])
           // index here can be regarded as stacked accepted number count.
           for (let [index, value] of timeData.entries()) {
-            let realTime = moment(this.contest.start_time).add(value, '秒').format()
+            let realTime = moment(this.contest.start_time).add(value, 'seconds').format()
             data.push([realTime, index + 1])
           }
           seriesData.push({
