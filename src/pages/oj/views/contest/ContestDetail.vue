@@ -34,10 +34,9 @@
     </div>
     <div v-show="showMenu" id="contest-menu">
       <VerticalMenu @on-click="handleRoute">
-        <VerticalMenu-item :disabled="contestMenuDisabled"
-                           :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
-          <Icon type="ios-photos"></Icon>
-          问题
+        <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
+          <Icon type="home"></Icon>
+          总览
         </VerticalMenu-item>
 
         <VerticalMenu-item :disabled="contestMenuDisabled"
@@ -46,6 +45,12 @@
           公告
         </VerticalMenu-item>
 
+        <VerticalMenu-item :disabled="contestMenuDisabled"
+                           :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
+          <Icon type="ios-photos"></Icon>
+          问题
+        </VerticalMenu-item>
+        
         <VerticalMenu-item v-if="OIContestRealTimePermission"
                            :disabled="contestMenuDisabled"
                            :route="{name: 'contest-submission-list'}">
@@ -58,11 +63,6 @@
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
           排名
-        </VerticalMenu-item>
-
-        <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
-          <Icon type="home"></Icon>
-          总览
         </VerticalMenu-item>
 
         <VerticalMenu-item v-if="showAdminHelper"

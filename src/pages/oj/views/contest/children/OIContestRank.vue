@@ -20,6 +20,9 @@
             <span>姓名</span>
             <i-switch v-model="showRealName"></i-switch>
           </p>
+          <p>
+            <Button type="primary" size="small" @click="downloadRankCSV">下载成绩表格</Button>
+          </p>
         </div>
       </Poptip>
     </div>
@@ -102,7 +105,7 @@
         dataRank: [],
         options: {
           title: {
-            text: '排名前十的队伍',
+            text: '排名前十的选手',
             left: 'center'
           },
           tooltip: {
@@ -221,6 +224,9 @@
             }
           })
         })
+      },
+      downloadRankCSV () {
+        utils.downloadFile(`contest_rank?download_csv=1&contest_id=${this.$route.params.contestID}&force_refrash=${this.forceUpdate ? '1' : '0'}`)
       }
     }
   }
