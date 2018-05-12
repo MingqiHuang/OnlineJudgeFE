@@ -395,10 +395,8 @@
           this.statusVisible = true
           api.submitCode(data).then(res => {
             this.submissionId = res.data.data && res.data.data.submission_id
-            let data = {id: this.submission.id, shared: shared}
-            api.updateSubmission(data).then(res => {
-        }, () => {
-        })
+            let data = {id: this.submission.id, shared: true}
+            api.updateSubmission(data).then(res => {}, () => {})
             // 定时检查状态
             this.submitting = false
             this.submissionExists = true
