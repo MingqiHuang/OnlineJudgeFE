@@ -159,7 +159,7 @@
         let data = {id: this.submission.id, shared: shared}
         api.updateSubmission(data).then(res => {
           this.getSubmission()
-          this.$success('Succeeded')
+          this.$success('成功')
         }, () => {
         })
       }
