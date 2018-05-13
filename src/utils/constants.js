@@ -102,9 +102,9 @@ export const CONTEST_TYPE = {
 }
 
 export const USER_TYPE = {
-  REGULAR_USER: '普通用户',
-  ADMIN: '管理员',
-  SUPER_ADMIN: '超级管理员'
+  REGULAR_USER: 'Regular User',
+  ADMIN: 'Admin',
+  SUPER_ADMIN: 'Super Admin'
 }
 
 export const PROBLEM_PERMISSION = {
