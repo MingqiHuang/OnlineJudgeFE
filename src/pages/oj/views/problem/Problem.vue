@@ -408,9 +408,11 @@
               return
             }
             this.checkSubmissionStatus()
+            let data = {id: this.submissionId,shared:true}
+            api.updateSubmission(data).then(res => {}, () => {})
           }, res => {
             this.getCaptchaSrc()
-            if (res.data.data.startsWith('需要输入验证码')) {
+            if (res.data.data.startsWith('Captcha is required')) {
               this.captchaRequired = true
             }
             this.submitting = false
