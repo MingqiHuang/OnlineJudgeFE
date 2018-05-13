@@ -408,8 +408,8 @@
               return
             }
             this.checkSubmissionStatus()
-            let data = {id: this.submissionId,shared:true}
-            api.updateSubmission(data).then(res => {}, () => {})
+            let datad = {id: this.submissionId, shared: true}
+            api.updateSubmission(datad).then(res => {}, () => {})
           }, res => {
             this.getCaptchaSrc()
             if (res.data.data.startsWith('Captcha is required')) {
