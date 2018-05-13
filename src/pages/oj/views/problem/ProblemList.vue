@@ -136,6 +136,9 @@
               let color = 'blue'
               if (t === 'Low') color = 'green'
               else if (t === 'High') color = 'yellow'
+              if (t === 'Low') t = '低'
+              else if (t === 'High') t = '高'
+              else t = '中'
               return h('Tag', {
                 props: {
                   color: color

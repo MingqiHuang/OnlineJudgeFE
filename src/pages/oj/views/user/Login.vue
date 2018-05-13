@@ -23,7 +23,7 @@
         @click="handleLogin"
         class="btn" long
         :loading="btnLoginLoading">
-        Login
+        登录
       </Button>
       <a v-if="website.allow_register" @click.stop="handleBtnClick('register')">没有帐号？现在注册！</a>
       <a @click.stop="goResetPassword" style="float: right">忘了密码？</a>
